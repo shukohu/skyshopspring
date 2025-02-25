@@ -9,6 +9,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Service
 public class StorageService {
     private final Map<UUID, Product> productStorage = new HashMap<>();
     private final Map<UUID, Article> articleStorage = new HashMap<>();
