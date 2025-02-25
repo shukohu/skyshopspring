@@ -5,10 +5,7 @@ import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,8 +18,8 @@ public class StorageService {
     }
 
     private void initializeStorage() {
-        Product product1 = new Product(UUID.randomUUID(), "Пицца");
-        Product product2 = new Product(UUID.randomUUID(), "Чай");
+        Product product1 = new Product(UUID.randomUUID(), "Пицца", 450);
+        Product product2 = new Product(UUID.randomUUID(), "Чай", 28);
         productStorage.put(product1.getId(), product1);
         productStorage.put(product2.getId(), product2);
 
@@ -38,5 +35,8 @@ public class StorageService {
 
     public Collection<Article> getAllArticles() {
         return articleStorage.values();
+    }
+    public Optional<Product> getProductById(UUID id){
+        return Optional.ofNullable(productStorage.get(id));
     }
 }
