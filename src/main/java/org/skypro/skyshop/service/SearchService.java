@@ -18,6 +18,10 @@ public class SearchService {
     }
 
     public Collection<SearchResult> search(String pattern) {
-        return storageService.getAllProducts().stream().filter(product -> product.getSearchTerm().toLowerCase().contains(pattern.toLowerCase())).map(SearchResult::fromSearchable).collect(Collectors.toList());
+        List<SearchResult> productResults = storageService.getAllProducts().stream().filter(product -> product.getSearchTerm().toLowerCase().contains(pattern.toLowerCase())).map(SearchResult::fromSearchable).collect(Collectors.toList());
+        List<SearchResult> articleResults = storageService.getAllArticles().stream().filter(article -> article.getSearchTerm().toLowerCase().contains(pattern.toLowerCase())).map(SearchResult::fromSearchable).collect(Collectors.toList());
+
+        productResults.addAll(articleResults);
+        return productResults;
     }
 }
