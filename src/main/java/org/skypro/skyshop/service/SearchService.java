@@ -1,7 +1,7 @@
 package org.skypro.skyshop.service;
 
+import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.search.SearchResult;
-import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -23,5 +23,9 @@ public class SearchService {
 
         productResults.addAll(articleResults);
         return productResults;
+    }
+
+    public List<Product> searchByName(String тест) {
+        return null;
     }
 }
